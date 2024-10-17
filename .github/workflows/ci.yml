@@ -38,7 +38,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Setup Node.js
+      - name: Setup Node.js ${{ inputs.logLevel }}
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
