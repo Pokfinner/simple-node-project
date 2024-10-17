@@ -42,7 +42,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: ${{ inputs.version | 'v1' }}
+          ref: ${{ inputs.version || 'v1' }}
           
 
       - name: Setup Node.js
