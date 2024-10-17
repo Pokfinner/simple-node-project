@@ -56,6 +56,9 @@ jobs:
       - name: Run tests
         run: npm test
 
+      - name: Listing stuff
+        run: ls -la
+
       - name: Docker build
         run: docker build -t pokfinner/simple-node-project:latest .
 
