@@ -1,7 +1,10 @@
 # .github/workflows/ci.yml
 name: Node.js CI
+run-name: Project CI
 
 on:
+  workflow_dispatch:
+    branches: [ main ]
   push:
     branches: [ main ]
   pull_request:
