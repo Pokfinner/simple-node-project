@@ -18,6 +18,9 @@ on:
         description: "Test scenario tags"
         required: false
         type: boolean
+      version:
+        description: "version to install"
+        required: true
 
   push:
     branches: [main]
