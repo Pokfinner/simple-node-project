@@ -1,5 +1,5 @@
 # .github/workflows/ci.yml
-name: Node.js CI
+name: Nodejs_CI
 run-name: Project CI
 
 on:
@@ -18,16 +18,15 @@ on:
         description: "Test scenario tags"
         required: false
         type: boolean
-      
+
   push:
     branches: [main]
   pull_request:
     branches: [main]
 
- # Add concurrency settings
 concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}  # A unique key per branch
-  cancel-in-progress: true  # This cancels any in-progress runs with the same group
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build-and-test:
@@ -38,10 +37,10 @@ jobs:
         node-version: [20.x, 22.x]
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
-      - name: Setup Node.js ${{ inputs.logLevel }}
-        uses: actions/setup-node@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
 
@@ -50,3 +49,12 @@ jobs:
 
       - name: Run tests
         run: npm test
+
+      - name: Docker build
+        run: docker build -t pokfinner/simple-node-project:latest .
+
+      #- name: Docker login
+      #  run: 
+
+      - name: Docker push
+        run: docker push pokfinner/simple-node-project:latest
