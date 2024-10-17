@@ -62,5 +62,5 @@ jobs:
       #- name: Docker login
       #  run: 
 
-      - name: Docker push
-        run: docker push pokfinner/simple-node-project:latest
+      #- name: Docker push
+      #  run: docker push pokfinner/simple-node-project:latest
